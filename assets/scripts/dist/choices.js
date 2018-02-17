@@ -2376,6 +2376,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this20 = this;
 
 	      var el = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+	      var runEvent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
 	      // Highlight first element in dropdown
 	      var choices = Array.from(this.dropdown.querySelectorAll('[data-choice-selectable]'));

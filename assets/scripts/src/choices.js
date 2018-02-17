@@ -2194,7 +2194,7 @@ class Choices {
    * @return
    * @private
    */
-  _highlightChoice(el = null) {
+  _highlightChoice(el = null, runEvent=true) {
     // Highlight first element in dropdown
     const choices = Array.from(this.dropdown.querySelectorAll('[data-choice-selectable]'));
     let passedEl = el;
