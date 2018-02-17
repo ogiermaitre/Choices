@@ -65,6 +65,7 @@ class Choices {
       paste: true,
       searchEnabled: true,
       searchChoices: true,
+      searchCustomFun: null,
       searchFloor: 1,
       searchResultLimit: 4,
       searchFields: ['label', 'value'],
@@ -649,7 +650,7 @@ class Choices {
         value: item.value,
         label: item.label,
         groupValue: group.value,
-          customProperties,
+        customProperties,
       });
     } else {
       triggerEvent(this.passedElement, 'unhighlightItem', {
@@ -1479,10 +1480,18 @@ class Choices {
     if (newValue.length >= 1 && newValue !== `${currentValue} `) {
       const haystack = this.store.getSearchableChoices();
       const needle = newValue;
-      const keys = isType('Array', this.config.searchFields) ? this.config.searchFields : [this.config.searchFields];
-      const options = Object.assign(this.config.fuseOptions, { keys });
-      const fuse = new Fuse(haystack, options);
-      const results = fuse.search(needle);
+
+      let results = undefined
+      if( this.config.searchCustomFun ){
+        const filterFun = this.config.searchCustomFun(newValue)
+        results = haystack.filter(filterFun).map(o=>({item:o}))
+      }
+      else{
+        const keys = isType('Array', this.config.searchFields) ? this.config.searchFields : [this.config.searchFields];
+        const options = Object.assign(this.config.fuseOptions, { keys });
+        const fuse = new Fuse(haystack, options);
+        results = fuse.search(needle);
+      }      
 
       this.currentValue = newValue;
       this.highlightPosition = 0;
