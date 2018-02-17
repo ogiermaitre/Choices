@@ -595,6 +595,7 @@ class Choices {
     const id = item.id;
     const groupId = item.groupId;
     const group = groupId >= 0 ? this.store.getGroupById(groupId) : null;
+    const { customProperties } = this.store.getChoiceById(item.choiceId)
 
     this.store.dispatch(
       highlightItem(id, true)
@@ -606,13 +607,15 @@ class Choices {
           id,
           value: item.value,
           label: item.label,
-          groupValue: group.value
+          groupValue: group.value,
+          customProperties,
         });
       } else {
         triggerEvent(this.passedElement, 'highlightItem', {
           id,
           value: item.value,
           label: item.label,
+          customProperties,
         });
       }
     }
@@ -634,6 +637,7 @@ class Choices {
     const id = item.id;
     const groupId = item.groupId;
     const group = groupId >= 0 ? this.store.getGroupById(groupId) : null;
+    const { customProperties } = this.store.getChoiceById(item.choiceId)
 
     this.store.dispatch(
       highlightItem(id, false)
@@ -644,13 +648,15 @@ class Choices {
         id,
         value: item.value,
         label: item.label,
-        groupValue: group.value
+        groupValue: group.value,
+          customProperties,
       });
     } else {
       triggerEvent(this.passedElement, 'unhighlightItem', {
         id,
         value: item.value,
         label: item.label,
+        customProperties,
       });
     }
 
