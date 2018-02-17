@@ -2411,6 +2411,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        passedEl.classList.add(this.config.classNames.highlightedState);
 	        passedEl.setAttribute('aria-selected', 'true');
 	        this.containerOuter.setAttribute('aria-activedescendant', passedEl.id);
+
+	        // trigger an highlightChoice event
+	        if (runEvent) {
+	          var choice = this.store.getChoiceById(passedEl.dataset.id);
+	          (0, _utils.triggerEvent)(this.passedElement, 'highlightChoice', choice);
+	        }
 	      }
 	    }
 

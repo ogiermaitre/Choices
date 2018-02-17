@@ -2229,6 +2229,12 @@ class Choices {
       passedEl.classList.add(this.config.classNames.highlightedState);
       passedEl.setAttribute('aria-selected', 'true');
       this.containerOuter.setAttribute('aria-activedescendant', passedEl.id);
+
+      // trigger an highlightChoice event
+      if (runEvent) {
+        const choice = this.store.getChoiceById(passedEl.dataset.id)
+        triggerEvent(this.passedElement, 'highlightChoice', choice)
+      }
     }
   }
 
