@@ -61,6 +61,7 @@ class Choices {
       removeItemButton: false,
       editItems: false,
       duplicateItems: true,
+      prependItemList: false,
       delimiter: ',',
       paste: true,
       searchEnabled: true,
@@ -2788,7 +2789,12 @@ class Choices {
 
     containerOuter.appendChild(containerInner);
     containerOuter.appendChild(dropdown);
-    containerInner.appendChild(itemList);
+    if( this.config.prependItemList ){
+      containerOuter.prepend(itemList);
+    }
+    else{
+      containerInner.appendChild(itemList);
+    }
 
     if (!this.isTextElement) {
       dropdown.appendChild(choiceList);
