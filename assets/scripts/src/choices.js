@@ -85,6 +85,7 @@ class Choices {
       noResultsText: 'No results found',
       noChoicesText: 'No choices to choose from',
       itemSelectText: 'Press to select',
+      focusDropdownAfterItemSelect : true,
       addItemText: (value) => {
         return `Press Enter to add <b>"${value}"</b>`;
       },
@@ -1233,7 +1234,7 @@ class Choices {
 
       // Focus input as without focus, a user cannot do anything with a
       // highlighted item
-      if (document.activeElement !== this.input) {
+      if (document.activeElement !== this.input && this.config.focusDropdownAfterItemSelect) {
         this.input.focus();
       }
     }
