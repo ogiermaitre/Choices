@@ -529,7 +529,7 @@ class Choices {
             if (canAddItem.response) {
               // ...append them and highlight the first choice
               this.choiceList.appendChild(choiceListFragment);
-              this._highlightChoice();
+              this._highlightChoice(undefined,false);
             } else {
               // ...otherwise show a notice
               this.choiceList.appendChild(this._getTemplate('notice', canAddItem.notice));
