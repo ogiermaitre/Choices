@@ -2477,14 +2477,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	          value: passedValue,
 	          label: passedLabel,
 	          groupValue: group.value,
-	          keyCode: passedKeyCode
+	          keyCode: passedKeyCode,
+	          customProperties: customProperties
 	        });
 	      } else {
 	        (0, _utils.triggerEvent)(this.passedElement, 'addItem', {
 	          id: id,
 	          value: passedValue,
 	          label: passedLabel,
-	          keyCode: passedKeyCode
+	          keyCode: passedKeyCode,
+	          customProperties: customProperties
 	        });
 	      }
 

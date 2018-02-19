@@ -2295,14 +2295,16 @@ class Choices {
         value: passedValue,
         label: passedLabel,
         groupValue: group.value,
-        keyCode: passedKeyCode
+        keyCode: passedKeyCode,
+        customProperties,
       });
     } else {
       triggerEvent(this.passedElement, 'addItem', {
         id,
         value: passedValue,
         label: passedLabel,
-        keyCode: passedKeyCode
+        keyCode: passedKeyCode,
+        customProperties,
       });
     }
 
