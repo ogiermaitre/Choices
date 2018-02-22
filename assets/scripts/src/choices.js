@@ -13,7 +13,7 @@ import {
   clearAll,
   clearChoices,
 }
-from './actions/index';
+  from './actions/index';
 import {
   isScrolledIntoView,
   getAdjacentEl,
@@ -30,7 +30,7 @@ import {
   triggerEvent,
   findAncestorByAttrName
 }
-from './lib/utils.js';
+  from './lib/utils.js';
 import './lib/polyfills.js';
 
 /**
@@ -86,7 +86,7 @@ class Choices {
       noResultsText: 'No results found',
       noChoicesText: 'No choices to choose from',
       itemSelectText: 'Press to select',
-      focusDropdownAfterItemSelect : true,
+      focusDropdownAfterItemSelect: true,
       addItemText: (value) => {
         return `Press Enter to add <b>"${value}"</b>`;
       },
@@ -186,8 +186,8 @@ class Choices {
     this.placeholder = false;
     if (!this.isSelectOneElement) {
       this.placeholder = this.config.placeholder ?
-      (this.config.placeholderValue || this.passedElement.getAttribute('placeholder')) :
-      false;
+        (this.config.placeholderValue || this.passedElement.getAttribute('placeholder')) :
+        false;
     }
 
     // Assign preset choices from passed object
@@ -484,7 +484,7 @@ class Choices {
    * @private
    */
   render() {
-    if(this.store.isLoading()) {
+    if (this.store.isLoading()) {
       return;
     }
 
@@ -529,7 +529,7 @@ class Choices {
             if (canAddItem.response) {
               // ...append them and highlight the first choice
               this.choiceList.appendChild(choiceListFragment);
-              this._highlightChoice(undefined,false);
+              this._highlightChoice(undefined, false);
             } else {
               // ...otherwise show a notice
               this.choiceList.appendChild(this._getTemplate('notice', canAddItem.notice));
@@ -767,12 +767,12 @@ class Choices {
     const body = document.body;
     const html = document.documentElement;
     const winHeight = Math.max(
-        body.scrollHeight,
-        body.offsetHeight,
-        html.clientHeight,
-        html.scrollHeight,
-        html.offsetHeight
-      );
+      body.scrollHeight,
+      body.offsetHeight,
+      html.clientHeight,
+      html.scrollHeight,
+      html.offsetHeight
+    );
 
     this.containerOuter.classList.add(this.config.classNames.openState);
     this.containerOuter.setAttribute('aria-expanded', 'true');
@@ -1055,7 +1055,7 @@ class Choices {
    * @public
    */
   clearInput() {
-    if (this.input.value){
+    if (this.input.value) {
       this.input.value = '';
     }
     if (!this.isSelectOneElement) {
@@ -1255,7 +1255,7 @@ class Choices {
     // If we are clicking on an option
     const id = element.getAttribute('data-id');
     const choice = this.store.getChoiceById(id);
-    const passedKeyCode  = activeItems[0] && activeItems[0].keyCode ? activeItems[0].keyCode : null;
+    const passedKeyCode = activeItems[0] && activeItems[0].keyCode ? activeItems[0].keyCode : null;
     const hasActiveDropdown = this.dropdown.classList.contains(this.config.classNames.activeState);
 
     // Update choice keyCode
@@ -1484,16 +1484,16 @@ class Choices {
       const needle = newValue;
 
       let results = undefined
-      if( this.config.searchCustomFun ){
+      if (this.config.searchCustomFun) {
         const filterFun = this.config.searchCustomFun(newValue)
-        results = haystack.filter(filterFun).map(o=>({item:o}))
+        results = haystack.filter(filterFun).map(o => ({ item: o }))
       }
-      else{
+      else {
         const keys = isType('Array', this.config.searchFields) ? this.config.searchFields : [this.config.searchFields];
         const options = Object.assign(this.config.fuseOptions, { keys });
         const fuse = new Fuse(haystack, options);
         results = fuse.search(needle);
-      }      
+      }
 
       this.currentValue = newValue;
       this.highlightPosition = 0;
@@ -2194,7 +2194,7 @@ class Choices {
    * @return
    * @private
    */
-  _highlightChoice(el = null, runEvent=true) {
+  _highlightChoice(el = null, runEvent = true) {
     // Highlight first element in dropdown
     const choices = Array.from(this.dropdown.querySelectorAll('[data-choice-selectable]'));
     let passedEl = el;
@@ -2271,18 +2271,20 @@ class Choices {
       passedValue += this.config.appendValue.toString();
     }
 
-    this.store.dispatch(
-      addItem(
-        passedValue,
-        passedLabel,
-        id,
-        passedOptionId,
-        groupId,
-        customProperties,
-        placeholder,
-        passedKeyCode
-      )
-    );
+    if (!customProperties.notItemize) {
+      this.store.dispatch(
+        addItem(
+          passedValue,
+          passedLabel,
+          id,
+          passedOptionId,
+          groupId,
+          customProperties,
+          placeholder,
+          passedKeyCode
+        )
+      );
+    }
 
     if (this.isSelectOneElement) {
       this.removeActiveItems(id);
@@ -2487,15 +2489,15 @@ class Choices {
           <div
             class="${globalClasses.containerOuter}"
             ${this.isSelectElement ? (this.config.searchEnabled ?
-              'role="combobox" aria-autocomplete="list"' :
-              'role="listbox"') :
-              ''
-            }
+            'role="combobox" aria-autocomplete="list"' :
+            'role="listbox"') :
+            ''
+          }
             data-type="${this.passedElement.type}"
             ${this.isSelectOneElement ?
-              'tabindex="0"' :
-              ''
-            }
+            'tabindex="0"' :
+            ''
+          }
             aria-haspopup="true"
             aria-expanded="false"
             dir="${direction}"
@@ -2556,13 +2558,13 @@ class Choices {
               data-value="${data.value}"
               data-deletable
               ${data.active ?
-                'aria-selected="true"' :
-                ''
-              }
+              'aria-selected="true"' :
+              ''
+            }
               ${data.disabled ?
-                'aria-disabled="true"' :
-                ''
-              }
+              'aria-disabled="true"' :
+              ''
+            }
               >
               ${data.label}<!--
            --><button
@@ -2584,13 +2586,13 @@ class Choices {
             data-id="${data.id}"
             data-value="${data.value}"
             ${data.active ?
-              'aria-selected="true"' :
-              ''
-            }
+            'aria-selected="true"' :
+            ''
+          }
             ${data.disabled ?
-              'aria-disabled="true"' :
-              ''
-            }
+            'aria-disabled="true"' :
+            ''
+          }
             >
             ${data.label}
           </div>
@@ -2603,9 +2605,9 @@ class Choices {
             dir="ltr"
             role="listbox"
             ${!this.isSelectOneElement ?
-              'aria-multiselectable="true"' :
-              ''
-            }
+            'aria-multiselectable="true"' :
+            ''
+          }
             >
           </div>
         `);
@@ -2626,9 +2628,9 @@ class Choices {
             data-value="${data.value}"
             role="group"
             ${data.disabled ?
-              'aria-disabled="true"' :
-              ''
-            }
+            'aria-disabled="true"' :
+            ''
+          }
             >
             <div class="${globalClasses.groupHeading}">${data.value}</div>
           </div>
@@ -2653,14 +2655,14 @@ class Choices {
             data-id="${data.id}"
             data-value="${data.value}"
             ${data.disabled ?
-              'data-choice-disabled aria-disabled="true"' :
-              'data-choice-selectable'
-            }
+            'data-choice-disabled aria-disabled="true"' :
+            'data-choice-selectable'
+          }
             id="${data.elementId}"
             ${data.groupId > 0 ?
-              'role="treeitem"' :
-              'role="option"'
-            }
+            'role="treeitem"' :
+            'role="option"'
+          }
             >
             ${data.label}
           </div>
@@ -2797,10 +2799,10 @@ class Choices {
 
     containerOuter.appendChild(containerInner);
     containerOuter.appendChild(dropdown);
-    if( this.config.prependItemList ){
+    if (this.config.prependItemList) {
       containerOuter.prepend(itemList);
     }
-    else{
+    else {
       containerInner.appendChild(itemList);
     }
 
