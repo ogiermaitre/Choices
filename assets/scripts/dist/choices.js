@@ -1609,13 +1609,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var needle = newValue;
 
 	        var results = undefined;
+	        var keys = (0, _utils.isType)('Array', this.config.searchFields) ? this.config.searchFields : [this.config.searchFields];
 	        if (this.config.searchCustomFun) {
-	          var filterFun = this.config.searchCustomFun(newValue);
+	          var filterFun = this.config.searchCustomFun(newValue, keys);
 	          results = haystack.filter(filterFun).map(function (o) {
 	            return { item: o };
 	          });
 	        } else {
-	          var keys = (0, _utils.isType)('Array', this.config.searchFields) ? this.config.searchFields : [this.config.searchFields];
 	          var options = Object.assign(this.config.fuseOptions, { keys: keys });
 	          var fuse = new _fuse2.default(haystack, options);
 	          results = fuse.search(needle);

@@ -1484,12 +1484,12 @@ class Choices {
       const needle = newValue;
 
       let results = undefined
+      const keys = isType('Array', this.config.searchFields) ? this.config.searchFields : [this.config.searchFields];
       if (this.config.searchCustomFun) {
-        const filterFun = this.config.searchCustomFun(newValue)
+        const filterFun = this.config.searchCustomFun(newValue, keys)
         results = haystack.filter(filterFun).map(o => ({ item: o }))
       }
       else {
-        const keys = isType('Array', this.config.searchFields) ? this.config.searchFields : [this.config.searchFields];
         const options = Object.assign(this.config.fuseOptions, { keys });
         const fuse = new Fuse(haystack, options);
         results = fuse.search(needle);
