@@ -488,7 +488,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // If sorting is enabled or the user is searching, filter choices
 
 
-	      if (this.config.shouldSort || this.isSearching) {
+	      if (this.config.shouldSort) {
 	        normalChoices.sort(filter);
 	      }
 
@@ -584,6 +584,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      this.currentState = this.store.getState();
+	      console.log(this.currentState.choices);
 
 	      // Only render if our state has actually changed
 	      if (this.currentState !== this.prevState) {

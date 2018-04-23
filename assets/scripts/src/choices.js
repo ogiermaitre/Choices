@@ -403,7 +403,7 @@ class Choices {
     }, { placeholderChoices: [], normalChoices: [] });
 
     // If sorting is enabled or the user is searching, filter choices
-    if (this.config.shouldSort || this.isSearching) {
+    if (this.config.shouldSort) {
       normalChoices.sort(filter);
     }
 
