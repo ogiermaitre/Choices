@@ -584,7 +584,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 
 	      this.currentState = this.store.getState();
-	      console.log(this.currentState.choices);
 
 	      // Only render if our state has actually changed
 	      if (this.currentState !== this.prevState) {
