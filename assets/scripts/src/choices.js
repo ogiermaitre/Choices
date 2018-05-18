@@ -1282,7 +1282,7 @@ class Choices {
       }
     }
 
-    this.clearInput();
+    // this.clearInput();
 
     // We wont to close the dropdown if we are dealing with a single select box
     if (hasActiveDropdown && this.isSelectOneElement) {
