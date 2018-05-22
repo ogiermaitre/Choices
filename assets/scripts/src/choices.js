@@ -1627,13 +1627,13 @@ class Choices {
 
     const target = e.target;
     const activeItems = this.store.getItemsFilteredByActive();
-    const hasFocusedInput = this.input === document.activeElement;
+    // const hasFocusedInput = this.input === document.activeElement;
     const hasActiveDropdown = this.dropdown.classList.contains(this.config.classNames.activeState);
     const hasItems = this.itemList && this.itemList.children;
     const keyString = String.fromCharCode(e.keyCode);
 
-    const backKey = 46;
-    const deleteKey = 8;
+    // const backKey = 46;
+    // const deleteKey = 8;
     const enterKey = 13;
     const aKey = 65;
     const escapeKey = 27;
@@ -1756,13 +1756,13 @@ class Choices {
       }
     };
 
-    const onDeleteKey = () => {
-      // If backspace or delete key is pressed and the input has no value
-      if (hasFocusedInput && !e.target.value && !this.isSelectOneElement) {
-        this._handleBackspace(activeItems);
-        e.preventDefault();
-      }
-    };
+    // const onDeleteKey = () => {
+    //   // If backspace or delete key is pressed and the input has no value
+    //   if (hasFocusedInput && !e.target.value && !this.isSelectOneElement) {
+    //     this._handleBackspace(activeItems);
+    //     e.preventDefault();
+    //   }
+    // };
 
     // Map keys to key actions
     const keyDownActions = {
@@ -1773,8 +1773,8 @@ class Choices {
       [pageUpKey]: onDirectionKey,
       [downKey]: onDirectionKey,
       [pageDownKey]: onDirectionKey,
-      [deleteKey]: onDeleteKey,
-      [backKey]: onDeleteKey,
+      // [deleteKey]: onDeleteKey,
+      // [backKey]: onDeleteKey,
     };
 
     // If keycode has a function, run it

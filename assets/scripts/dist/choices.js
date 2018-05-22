@@ -1769,13 +1769,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var target = e.target;
 	      var activeItems = this.store.getItemsFilteredByActive();
-	      var hasFocusedInput = this.input === document.activeElement;
+	      // const hasFocusedInput = this.input === document.activeElement;
 	      var hasActiveDropdown = this.dropdown.classList.contains(this.config.classNames.activeState);
 	      var hasItems = this.itemList && this.itemList.children;
 	      var keyString = String.fromCharCode(e.keyCode);
 
-	      var backKey = 46;
-	      var deleteKey = 8;
+	      // const backKey = 46;
+	      // const deleteKey = 8;
 	      var enterKey = 13;
 	      var aKey = 65;
 	      var escapeKey = 27;
@@ -1897,16 +1897,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      };
 
-	      var onDeleteKey = function onDeleteKey() {
-	        // If backspace or delete key is pressed and the input has no value
-	        if (hasFocusedInput && !e.target.value && !_this16.isSelectOneElement) {
-	          _this16._handleBackspace(activeItems);
-	          e.preventDefault();
-	        }
-	      };
+	      // const onDeleteKey = () => {
+	      //   // If backspace or delete key is pressed and the input has no value
+	      //   if (hasFocusedInput && !e.target.value && !this.isSelectOneElement) {
+	      //     this._handleBackspace(activeItems);
+	      //     e.preventDefault();
+	      //   }
+	      // };
 
 	      // Map keys to key actions
-	      var keyDownActions = (_keyDownActions = {}, _defineProperty(_keyDownActions, aKey, onAKey), _defineProperty(_keyDownActions, enterKey, onEnterKey), _defineProperty(_keyDownActions, escapeKey, onEscapeKey), _defineProperty(_keyDownActions, upKey, onDirectionKey), _defineProperty(_keyDownActions, pageUpKey, onDirectionKey), _defineProperty(_keyDownActions, downKey, onDirectionKey), _defineProperty(_keyDownActions, pageDownKey, onDirectionKey), _defineProperty(_keyDownActions, deleteKey, onDeleteKey), _defineProperty(_keyDownActions, backKey, onDeleteKey), _keyDownActions);
+	      var keyDownActions = (_keyDownActions = {}, _defineProperty(_keyDownActions, aKey, onAKey), _defineProperty(_keyDownActions, enterKey, onEnterKey), _defineProperty(_keyDownActions, escapeKey, onEscapeKey), _defineProperty(_keyDownActions, upKey, onDirectionKey), _defineProperty(_keyDownActions, pageUpKey, onDirectionKey), _defineProperty(_keyDownActions, downKey, onDirectionKey), _defineProperty(_keyDownActions, pageDownKey, onDirectionKey), _keyDownActions);
 
 	      // If keycode has a function, run it
 	      if (keyDownActions[e.keyCode]) {
