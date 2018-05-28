@@ -1258,13 +1258,15 @@ class Choices {
     const passedKeyCode = activeItems[0] && activeItems[0].keyCode ? activeItems[0].keyCode : null;
     const hasActiveDropdown = this.dropdown.classList.contains(this.config.classNames.activeState);
 
+    // save scroll position
+    const oldScroll = this.choiceList.scrollTop
+
     // Update choice keyCode
     choice.keyCode = passedKeyCode;
 
     triggerEvent(this.passedElement, 'choice', {
       choice,
     });
-
     if (choice && !choice.selected && !choice.disabled) {
       const canAddItem = this._canAddItem(activeItems, choice.value);
 
@@ -1282,6 +1284,8 @@ class Choices {
       }
     }
 
+    // restore scroll
+    this.choiceList.scrollTop = oldScroll
     // this.clearInput();
 
     // We wont to close the dropdown if we are dealing with a single select box

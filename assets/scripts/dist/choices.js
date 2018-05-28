@@ -1394,13 +1394,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var passedKeyCode = activeItems[0] && activeItems[0].keyCode ? activeItems[0].keyCode : null;
 	      var hasActiveDropdown = this.dropdown.classList.contains(this.config.classNames.activeState);
 
+	      // save scroll position
+	      var oldScroll = this.choiceList.scrollTop;
+
 	      // Update choice keyCode
 	      choice.keyCode = passedKeyCode;
 
 	      (0, _utils.triggerEvent)(this.passedElement, 'choice', {
 	        choice: choice
 	      });
-
 	      if (choice && !choice.selected && !choice.disabled) {
 	        var canAddItem = this._canAddItem(activeItems, choice.value);
 
@@ -1410,6 +1412,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }
 
+	      // restore scroll
+	      this.choiceList.scrollTop = oldScroll;
 	      // this.clearInput();
 
 	      // We wont to close the dropdown if we are dealing with a single select box
